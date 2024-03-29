@@ -44,4 +44,4 @@ assert ek=="Pizza üstü:"
 assert odeme=="Ödeme tipi:Kredi Kartı"
 assert tutar=="Tutar:10 TL"
 
-driver.save_screenshot("./sonuc.png")
+
