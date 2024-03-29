@@ -25,6 +25,27 @@ import time
 def login(username,password):
     driver.get("https://the-internet.herokuapp.com/login")
     driver.find_element(By.XPATH, "//*[@name='username']").send_keys(username)
+
     driver.find_element(By.XPATH, "//*[@name='password']").send_keys(password)
+
+    mesaj=driver.find_element(By.ID,"flash").text
+
+    return mesaj
+
     driver.find_element(By.XPATH, "//button").click()
-login("adada","fsfsf")
+
+
+    assert "Your username is invalid!" in mesaj
+
+    mesaj = login("tomsmith", "xyz")
+
+    assert "Your password is invalid!" in mesaj
+    time.sleep(3)
+
+    mesaj=login("tomsmith","SuperSecretPassword!")
+    time.sleep(3)
+
+    assert "You logged into a secure area!" in mesaj
+    time.sleep(3)
+
+
